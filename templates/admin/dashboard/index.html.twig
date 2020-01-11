@@ -70,7 +70,7 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col">
+			<div class="col-6">
 				<div class="alert alert-success">
 					<h2 class="alert-heading my-3">
 						<i class="fas fa-arrow-up"></i>
@@ -93,7 +93,7 @@
 									<td>
 										<img src="{{ ad.picture }}" alt="photo de l'annonce {{ ad.title }}" class="avatar avatar-micro">
 										{{ ad.firstName }}
-										{{ ad.lastName }}
+										{{ ad.lastName | upper}}
 									</td>
 									<td class="text-center">
 										<span class="badge badge-dark">{{ ad.note | number_format(1, ',', '') }}</span>
@@ -104,7 +104,7 @@
 					</table>
 				</div>
 			</div>
-			<div class="col-">
+			<div class="col-6">
 				<div class="alert alert-danger">
 					<h2 class="alert-heading my-3">
 						<i class="fas fa-arrow-down"></i>
@@ -127,7 +127,7 @@
 									<td>
 										<img src="{{ ad.picture }}" alt="photo de l'annonce {{ ad.title }}" class="avatar avatar-micro">
 										{{ ad.firstName }}
-										{{ ad.lastName }}
+										{{ ad.lastName | upper }}
 									</td>
 									<td class="text-center">
 										<span class="badge badge-dark">{{ ad.note | number_format(1, ',', '') }}</span>

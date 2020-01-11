@@ -1,0 +1,60 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Administration des utilisateurs
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<h1 class="my-5">Administrtion des utilisateurs</h1>
+        
+        <table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Email</th>
+					<th>Slug</th>
+					<th>Avatar</th>
+					<th class="text-center">Nombre d'annonces</th>
+					<th class="text-center">Nombre de réservations</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for user in pagination.data %}
+					<tr>
+						<td>{{ user.id }}
+						<td>{{ user.firstName }}
+							{{ user.lastName | upper }}</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.slug }}</td>
+						<td>
+							<img src="{{ user.picture }}" alt="Avatar de {{ user.firstName }} {{ user.lastName | upper }}" class="avatar avatar-mini mb-3">
+						</td>
+						<td class="text-center">
+							<span class="badge badge-primary rounded">
+								{{ user.ads | length }}
+							</span>
+						</td>
+						<td class="text-center">
+							<span class="badge badge-primary rounded">
+								{{ user.bookings | length }}
+							</span>
+						</td>
+						<td>
+							<a href="#" class="btn btn-primary">
+								<i class="fas fa-edit"></i>
+							</a>
+							<a href="{{ path('admin_user_delete', {'id' : user.id}) }}" id="delete-comment" class="btn btn-danger">
+								<i class="fas fa-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+        {# Affichage de la pagination #}
+		{{ pagination.display() }}
+	</div>
+{% endblock %}
